@@ -1,0 +1,53 @@
+ // This function will parse and display CSV data with headers and rows
+function parseCSVstructure(csv) {
+    // Step 1: Split the CSV string into rows using the newline character '\n'
+    const lines = csv.split('\n');
+    console.log(lines); // Print the rows to check if it's correct
+
+    // Step 2: Extract the headers from the first row
+    const headers = lines[0].split(',');
+    console.log(headers); // Print the headers to check if it's correct
+
+    // Step 3: Loop through the remaining rows to process the data
+    for (let i = 1; i < lines.length; i++) {
+        const cells = lines[i].split(',');
+        console.log(cells); // Print each row of data
+    }
+}
+
+// Example CSV data
+const csvData = `ID,Name,Occupation,Age
+42,Bruce,Knight,41
+57,Bob,Fry Cook,19
+63,Blaine,Quiz Master,58
+98,Bill,Doctor’s Assistant,26`;
+
+// Call the function with the CSV data
+parseCSVstructure(csvData);function parseCSVstructure(csv) {
+    // Step 1: Split the CSV string into rows using the newline character '\n'
+    const lines = csv.split('\n'); 
+    console.log(lines); // Print the rows to check if it's correct
+    
+    // Step 2: Extract the headers from the first row
+    const headers = lines[0].split(',');  
+    console.log(headers); // Print the headers to check if it's correct
+    
+    // Step 3: Loop through the remaining rows to process the data
+    const result = [];  // This array will hold our objects
+    
+    for (let i = 1; i < lines.length; i++) {  // Start from 1 to skip the header row
+      const values = lines[i].split(','); // Split each row by commas to get the values
+      let obj = {};  // Create an empty object for each row
+      
+      // Loop through the headers and assign the values to the correct key
+      headers.forEach((header, index) => {
+        obj[header] = values[index];  // Use the header as the key and the value from the row
+      });
+      
+      result.push(obj);  // Add the object to the result array
+    }
+    
+    console.log(result);  // Print the array of objects
+    return result;  // Return the result (array of objects)
+  }
+  
